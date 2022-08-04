@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">MyFirstApp</string>
-    <string name="title">반갑습니다.</string>
-    <string name="user">Cubite 님!</string>
-    <string name="search_elements">검색...</string>
-</resources>

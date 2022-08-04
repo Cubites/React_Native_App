@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyFirstApp</string>
+    <string name="title">반갑습니다.</string>
+    <string name="user">Cubite 님!</string>
+    <string name="search_elements">검색...</string>
+    <string name="goals">SKILLS...</string>
+    <string name="schedule">Schedule</string>
+    <string name="home">HOME</string>
+    <string name="about">ABOUT ME</string>
+    <string name="textTrending">view more</string>
+    <string name="trendtext">우는 때에, 구하지 기쁘며, 뿐이다. 너의 피어나는 청춘의 그들은 안고, 그들은 만천하의 것이다.</string>
+    <string name="favorite">favorite</string>
+    <string name="account">account</string>
+    <string name="setting">settings</string>
+</resources>
