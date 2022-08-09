@@ -15,16 +15,18 @@ const Layout02 = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.todoList}></View>
+      <View style={styles.todoList}>
+        
+      </View>
 
       <View style={styles.sortbox}>
-        <TouchableOpacity styles={styles.sortButton}>
+        <TouchableOpacity style={styles.sortButton}>
           <Text style={styles.sortBtnText}>All</Text>
         </TouchableOpacity>
-        <TouchableOpacity styles={styles.sortButton}>
+        <TouchableOpacity style={styles.sortButton}>
           <Text style={styles.sortBtnText}>Active</Text>
         </TouchableOpacity>
-        <TouchableOpacity styles={styles.sortButton}>
+        <TouchableOpacity style={styles.sortButton}>
           <Text style={styles.sortBtnText}>Complete</Text>
         </TouchableOpacity>
       </View>
@@ -83,22 +85,26 @@ const styles = StyleSheet.create({
     height: '10%',
     position: 'relative',
     bottom: 0,
-    // justifyContent: 'space-between',
+    justifyContent: 'space-between',
     flexDirection: 'row',
   },
   sortButton: {
-    // position: 'relative',
-    backgroundColor: '#edefed',
-    // width: '100%',
+    position: 'relative',
+    width: '100%',
     flex: 1,
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderColor: 'white'
   },
   sortBtnText: {
     width: '100%',
     height: '100%',
     textAlignVertical: 'center',
+    textAlign: 'center',
     fontSize: 20,
-    backgroundColor: '#e6aae6'
+    backgroundColor: '#aad3aa'
   }
 });
 

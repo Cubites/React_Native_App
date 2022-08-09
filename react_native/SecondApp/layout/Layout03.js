@@ -3,7 +3,9 @@ import { View, Text } from 'react-native';
 
 const Layout03 = () => {
   return (
-    <div>Layout03</div>
+    <View>
+      
+    </View>
   )
 }
 
