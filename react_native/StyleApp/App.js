@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import ShadowStyle from './components/ShadowStyle';
 import Style01 from './components/Style01';
 import Style02 from './components/Style02';
 import Style03 from './components/Style03';
@@ -18,9 +19,10 @@ const App = () => {
     >
       {/* <Style01 BlackNWhite={BlackNWhite} />
       <Style02 BlackNWhite={BlackNWhite} toggleDarkMode={toggleDarkMode} /> */}
-      <Style03/>
+      {/* <Style03/> */}
       {/* <Style04/> */}
       {/* <Style05/> */}
+      <ShadowStyle />
     </ScrollView>
   )
 }

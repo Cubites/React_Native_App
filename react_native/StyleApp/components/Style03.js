@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Shadow } from 'react-native-shadow-2';
 
 const Style03 = () => {
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
-        <View style={styles.cardImageContainer}>
+        <Shadow style={styles.cardImageContainer}>
           <Icon name="user" size={85} color="#000000"/>
-        </View>
+        </Shadow>
         <TextCenter style={{fontSize: 30, color: '#fff'}}>
           홍길동
         </TextCenter>
@@ -25,7 +26,7 @@ const Style03 = () => {
 
 const Div = (props) => {
   return (
-    <View style={[styles.div, styles.props]}>
+    <View style={[styles.div, props.style]}>
       {props.children}
     </View>
   )
@@ -64,11 +65,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#2196f3',
     width: 300,
     marginTop: 80,
+    // padding: 30,
     borderRadius: 30,
     borderWidth: 5,
     borderColor: '#0069c0',
     borderStyle: 'solid',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   cardImageContainer: {
     backgroundColor: '#ffffff',

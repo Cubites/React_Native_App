@@ -76,3 +76,53 @@
 * both
   <br>: lineHeight, textAlign, textDecorationLine, textShadowColor, textShadowOffset, textShadowRadius, (letterSpacing; 최신기기는 적용가능)
 * 양쪽에서 모두 적용가능한 옵션만 사용을 권장
+
+## 해상도
+* 해상도 확인 사이트 : https://screensiz.es/
+* 디스플레이에 표시되는 픽셀 수, 보통 디바이스의 높이와 폭에 표현되는 픽셀 수를 의미
+* Pixels/Inch (ppi) : 1인치 안의 픽셀 수 / Dots/Inch (dpi)
+* 모니터의 기본 해상도 : 대부분 72ppi (4K(UHD), 8K(OLED)도 있음)
+* 모바일은 기기마다 ppi가 다름 > 때문에 다른 단위를 사용
+  * 안드로이드 단위 : dp (density-independent pixel; 밀도 수) 
+    <br>> hdpi, xhdpi, xxhdpi, xxxhdpi
+  * IOS 단위 : PT (Point-PT)
+    <br>> 1x, 2x, 3x
+  * 실제 dp로 디자인하면 너무 크므로 보통 가로 세로를 각각 1/4 해서 디자인 함
+
+### 입체감 표현
+* 안드로이드 : 그림자를 이용
+  * 기본 정책 = Material Design
+  * react-native 기본 기능으로는 그리잠자를 넣기 매우 어려움
+    <br>> 보통 모듈을 사용함(react-native-shadow, react-native-shadow-view)
+    * react-native-shadow-view : 안드로이드에서 react-native-shadow가 적용되게 해주는 모듈
+* IOS : 그라데이션을 이용
+  * 컨텐츠를 중시하는 디자인
+* 디자인 코드 예
+  <pre>
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: {
+          width: 5,
+          height: 10
+        },
+        shadowOpacity: 0.3
+      },
+      android: {
+        borderWidth: 3,
+        borderColor: 'black',
+        elevation: 50
+      }
+    }),
+  </pre>
+
+## Transform 속성
+* translateX, translateY
+* rotate, rotateX, rotateY, rotateZ
+* scale, scaleX, scaleY
+* skewX, skewY (각도 변환; 마름모 모양으로 보임)
+* perspective(원근감; z-index 와 유사한 기능)
+
+## 모듈
+* prop-types : PropTypes를 이용하여 컴포넌트에 적용되는 속성을 지정
+* immutability-helper : 
