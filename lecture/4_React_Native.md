@@ -126,3 +126,67 @@
 ## 모듈
 * prop-types : PropTypes를 이용하여 컴포넌트에 적용되는 속성을 지정
 * immutability-helper : 
+
+## 애니메이션
+* Animated API를 이용해서 애니메이션 효과를 가져옴(react-native 기본 내장)
+* 사용 방법 : <code>import { Animated } from 'react-native';</code>
+* Animated API를 기본으로 적용가능한 컴포넌트
+  <br>> View, ScrollView, Text, Image
+
+#### 사용 예시
+<pre>
+const Anim = useRef(new Animated.Value(숫자값)).current;
+const animate = () => {
+  Animated.timing(
+    Anim, {
+      toValue: 변경값,
+      duration: 동작시간(ms 단위),
+      useNativeDriver: false,
+    }
+  ).start();
+}
+// 애니메이션이 "숫자값"에서 "변경값"으로 "동작시간"의 지속 시간을 두고 변경됨
+</pre>
+
+#### 실 사용 팁
+* <code>new Animated.Value(n)</code>(2D 애니메이션은 <code>new Animated.ValueXY({x, n, y: m}))</code> 사용)
+* useRef() 훅을 이용하여 함수가 rerendering 되더라도 초기 값을 유지하도록 설정
+  <br>> <code>const animation = useRef(new Animated.Value(n)).current;</code>
+
+### 기본 정보
+* 기본 컴포넌트
+  * Animated.Image
+  * Animated.ScrollView
+  * Animated.Text
+  * Animated.View
+* 함수
+  * Animated.timing() : 시간이 지남에 따라 값을 애니메이션
+    <br>> <code>Animated.timing({}).start({finished: true})</code>
+    <br>> finished: true 인 경우 callback으로 추가행동 지정 가능
+  * Animated.spring() : spring 물리모델을 제공
+  * Animated.decay() : 초기 속도로 시작해서 점차 정지
+* 여러 설정 기능
+  * setValue() : 값 설정
+  * setOffset(offset) : 맨 앞에 적용되는 오프셋 설정
+  * flattenOffset() : offset 기준 값에 병합하고 오프셋을 0으로 재설정
+  * extractOffset() : offset 기준 값을 설정하고 기준값을 0으로 재설정
+  * addListener() : 애니메이션 업데이트를 관찰
+  * removeListener() : 리스너 등록 취소
+  * removeAllListener()
+  * stopAnimation()
+  * resetAnimation()
+  * interpolate(기본값)
+    * inputRange, outputRange
+  * sequence() : 순서대로 애니메이션
+  * parallel() : 동시에 애니메이션
+  * stagger(delay, ) : 일정 간격(delay)을 두고 순차적으로 실행
+  * delay()
+
+#### useNativeDriver 에러
+* Animated 속성에 useNativeDriver를 넣지 않아 발생하는 에러
+  <br>> userNativeDriver : 애니메이션을 부드럽게 만들어줌
+* 넣을 수 있는 값은 true, false
+* non-layout(ex: transform, opacity) 프로퍼티에만 적용가능
+  <br>layout(ex: width, top, flex) 프로퍼티에는 적용불가
+
+### react-native-reanimated
