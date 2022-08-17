@@ -66,7 +66,7 @@
   </pre>
 * object, void
 * never : 함수가 항상 Exception을 throw하거나 함수 내 무한루프가 있어 절대 리턴하지 않을 경우
-  <pre>
+  ```javascript
   function error(msg):never{
     throw new Errorr(msg);
   }
@@ -77,47 +77,47 @@
 
     }
   }
-  </pre>
+  ```
 
 #### 배열 타입
-  <pre>
+  ```javascript
   // []를 이용한 배열
   let scores:number[];
   scores = [80, 90, 80, 65];
-  <br>
+
   // Array<T>를 사용한 배열
   let scores:Array< number > = [80, 90, 80, 65];
-  </pre>
+  ```
 #### Enum (열거형)
 * enum은 <strong>"상수들을 명명하여"</strong> 나열한 집합을 정의한 것
 * 숫자 혹은 문자열을 대신하여 레이블을 부여하기 때문에 코드 가독성을 높여줌
 * 예
-  <pre>
+  ```javascript
   enum Color {red, Green, Blue};
   <br>
   // enum 변수 선언 및 값 할당
   let c:Color = Color.Green;
   console.log(c);
-
+  ```
 #### Tuple (튜플)
 * 정해진 요소 수와 요소 타입을 설정
- <pre>
- let score: [string, number, number, string];
- score = ['철수', 30, 10, '민수'];
- </pre>
+  ```javascript
+  let score: [string, number, number, string];
+  score = ['철수', 30, 10, '민수'];
+  ```
 
 #### 함수
 
 #### interface
 * 인터페이스는 객체가 갖는 구조를 미리 만들어 놓은 것
-  <pre>
+  ```javascript
   inferface Order{
     id: number;
     product: string;
     deliver: Boolean;
   }
   let pr:Order = [id: 10, product: '좋은 상품', deliver: true]
-  </pre>
+  ```
 
 ## Class
 * public : 내, 외부 해당 멤버를 모두 접근할 수 있음
@@ -125,7 +125,7 @@
 * protected : 해당 클래스와 그 클래스로부터 파생된 서브 클래스에서 사용 가능
 * private : 해당클래스 내에서만 사용가능
 * 예
-  <pre>
+  ```javascript
   class Shape{
     private name:string;
     public x:number = 0;
@@ -143,4 +143,4 @@
   s1.y = 200;
   s1.draw();
   let name = s1.name; // error (private 이라 접근 불가)
-  </pre>
+  ```
