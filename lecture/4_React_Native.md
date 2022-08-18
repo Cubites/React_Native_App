@@ -261,3 +261,38 @@ const animate = () => {
     ```
     * headerLeft, headerRight
     * 뒤로가기 : headerBackTitle, headerTitleStyle, headerBackImageSource
+* TopTab
+  * @react-navigation/material-top-tabs, react-native-tab-view
+
+### Drawer
+* 햄버거 아이콘을 누르면 메뉴가 나오는 기능이 구현된 모듈
+#### 설치
+* <code>@react-navigation/drawer</code>, <code>react-native-reanimated</code> 설치
+#### 기능
+* <code>navigation.dispatch(DrawerActions.openDrawer())</code> : drawer 열기
+* <code>navigation.dispatch(DrawerActions.closeDrawer())</code> : drawer 닫기
+* <code>navigation.dispatch(DrawerActions.toggleDrawer())</code> : drawer 열고 닫기
+* <code>const isDrawerOpen = useDrawerStatus() === 'open'</code> : drawer가 열려있는지 확인
+
+## 용도 확인 필요한 모듈
+* 그 외 사용한 모듈(용도 확인 필요)
+  * react-native-screens, 
+  * react-native-safe-area-context
+  * @react-navigation/material-top-tabs
+  * react-native-tab-view
+  * react-native-table-view
+  * react-native-pager-view
+  * react-native-paper
+  * react-native-reanimated
+  * react-native-shared-element
+  * react-navigation-shared-element
+  * react-native-animatable : 애니메이션을 용이하게 해줌
+  * react-native-gesture-handler 
+  * react-native-vector-icons : 벡터 아이콘
+* plugin
+  * @react-navigation/bottom-tabs 
+  * @react-navigation/material-bottom-tabs 
+  * @react-navigation/material-top-tabs 
+  * @react-navigation/native 
+  * @react-navigation/stack
+  * @react-native-community/masked-view
