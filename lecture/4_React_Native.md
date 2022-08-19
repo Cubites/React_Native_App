@@ -270,8 +270,11 @@ const animate = () => {
 * <code>@react-navigation/drawer</code>, <code>react-native-reanimated</code> 설치
 #### 기능
 * <code>navigation.dispatch(DrawerActions.openDrawer())</code> : drawer 열기
+  <br>> <code>navigation.openDrawer()</code>
 * <code>navigation.dispatch(DrawerActions.closeDrawer())</code> : drawer 닫기
+  <br>> <code>navigation.closeDrawer()</code>
 * <code>navigation.dispatch(DrawerActions.toggleDrawer())</code> : drawer 열고 닫기
+  <br>> <code>navigation.toggleDrawer()</code>
 * <code>const isDrawerOpen = useDrawerStatus() === 'open'</code> : drawer가 열려있는지 확인
 
 ## 용도 확인 필요한 모듈
@@ -295,4 +298,5 @@ const animate = () => {
   * @react-navigation/material-top-tabs 
   * @react-navigation/native 
   * @react-navigation/stack
+  * @react-navigation/native-stack
   * @react-native-community/masked-view
