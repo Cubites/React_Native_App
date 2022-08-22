@@ -277,6 +277,20 @@ const animate = () => {
   <br>> <code>navigation.toggleDrawer()</code>
 * <code>const isDrawerOpen = useDrawerStatus() === 'open'</code> : drawer가 열려있는지 확인
 
+## StatusBar
+* 상단 메뉴바에 디자인이 묻히지 않게 해야함
+* <code>react-native-safe-area-context</code> 모듈의 <code>useSafeAreaInsets()</code> 훅을 사용하면 StatusBar의 높이를 구할 수 있음
+
+## 자잘한 기능들(react-native 모듈)
+* Image 태그의 속성에 reaseMode라는 속성이 있음
+  <br>> cover, contain, stretch, repeat
+* <code>KeyboardAvoidingView</code> 태그로 감싸면 키보드가 나올때 키보드에 가리지 않음
+* TouchableNativeFeedback 태그: 클릭 시 물결 이벤트가 나옴
+
+## expo-app-loading
+* 앱 로딩 화면과 관련된 모듈
+
+
 ## 용도 확인 필요한 모듈
 * 그 외 사용한 모듈(용도 확인 필요)
   * react-native-screens, 
@@ -292,6 +306,10 @@ const animate = () => {
   * react-native-animatable : 애니메이션을 용이하게 해줌
   * react-native-gesture-handler 
   * react-native-vector-icons : 벡터 아이콘
+  * expo-app-loading
+  * expo-asset
+  * expo-font
+  * expo-location
 * plugin
   * @react-navigation/bottom-tabs 
   * @react-navigation/material-bottom-tabs 
