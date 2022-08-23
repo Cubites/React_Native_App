@@ -1,11 +1,10 @@
 import React from 'react';
 import { FlatList, View, Text, StyleSheet } from 'react-native';
+import MemoItem from './MemoItem';
 
 const MemoList = ({ myMemo }) => {
   const renderItem = ({item}) => (
-    <View>
-      <Text>{item.content}</Text>
-    </View>
+    <MemoItem id={item.id} content={item.content} dt={item.dt} done={item.done} />
   )
   return (
     <FlatList 

@@ -29,7 +29,7 @@
 * justifyContent : flex-start, flex-end, space-between, space-around, space-evenly(동일 크기 분배)
 * alignItems : stretch(기본값), flex-start, flex-end, center, baseline
 
-## 특징
+## 속성(css)
 ### 스타일 시트가 javscript로 이루어짐
 * object 타입의 낙타표기법으로 구성
 * 컴포넌트 특징에 따른 스타일 시트가 따로 있음
@@ -46,29 +46,26 @@
 * relative, absolute 2가지만 존재, 기본값은 relative
 
 ### Font
-#### fontSize
-* 숫자만 작성(안드로이드는 sp, IOS는 dp로 단위가 다르기 때문)
-#### fontStyle
-* 'normal', 'italic' 두 가지 옵션만 있음
-#### fontWeight
-* 'normal'(400), 'bold'(700), '100' ~ '900'
-#### fontFamily
-* 안드로이드 기본폰트 : 나눔 고딕 / IOS 기본폰트 : NOTO Sans
-* monospace 옵션은 IOS에 존재하지 않음(안드로이드만 적용 가능)
-* 적용 방법 예
-  <pre>
-  fonts: {
-    ...Platform.select({
-      ios: {
-        fontFamily: 'American Typewriter'
-      },
-      android: {
-        fontFamily: 'monospace'
-      }
-    })
-  }
-  </pre>
-### 안드로이드 혹은 IOS만 적용가능한 옵션
+* fontSize : 숫자만 작성(안드로이드는 sp, IOS는 dp로 단위가 다르기 때문)
+* fontStyle : 'normal', 'italic' 두 가지 옵션만 있음
+* fontWeight : 'normal'(400), 'bold'(700), '100' ~ '900'
+* fontFamily
+  * 안드로이드 기본폰트 : 나눔 고딕 / IOS 기본폰트 : NOTO Sans
+  * monospace 옵션은 IOS에 존재하지 않음(안드로이드만 적용 가능)
+  * 적용 방법 예
+    <pre>
+    fonts: {
+      ...Platform.select({
+        ios: {
+          fontFamily: 'American Typewriter'
+        },
+        android: {
+          fontFamily: 'monospace'
+        }
+      })
+    }
+    </pre>
+### 안드로이드 혹은 IOS만 적용가능한 속성(css)
 * IOS
   <br>: letterSpacing, textDecorationColo, textDecorationstyle, writingDirection
 * Android
@@ -116,7 +113,7 @@
     }),
   </pre>
 
-## Transform 속성
+## Transform 속성(css)
 * translateX, translateY
 * rotate, rotateX, rotateY, rotateZ
 * scale, scaleX, scaleY
@@ -149,7 +146,8 @@ const animate = () => {
 </pre>
 
 #### 실 사용 팁
-* <code>new Animated.Value(n)</code>(2D 애니메이션은 <code>new Animated.ValueXY({x, n, y: m}))</code> 사용)
+* <code>new Animated.Value(n)</code>
+  <br>> (2D 애니메이션은 <code>new Animated.ValueXY({x, n, y, m}))</code> 사용)
 * useRef() 훅을 이용하여 함수가 rerendering 되더라도 초기 값을 유지하도록 설정
   <br>> <code>const animation = useRef(new Animated.Value(n)).current;</code>
 
@@ -182,139 +180,24 @@ const animate = () => {
   * stagger(delay, ) : 일정 간격(delay)을 두고 순차적으로 실행
   * delay()
 
-#### useNativeDriver 에러
-* Animated 속성에 useNativeDriver를 넣지 않아 발생하는 에러
-  <br>> userNativeDriver : 애니메이션을 부드럽게 만들어줌
-* 넣을 수 있는 값은 true, false
-* non-layout(ex: transform, opacity) 프로퍼티에만 적용가능
-  <br>layout(ex: width, top, flex) 프로퍼티에는 적용불가
 
-### react-native-reanimated
 
-## 네비게이션
-#### 필요 패키지
-* @react-natigation/native, @react-navigation/native-stack
-  <br>> <code>npm install @react-navigation/native @react-navigation/native-stack</code>
-* react-native-screens, react-native-safe-area-context
-  <br>> <code>expo install react-native-screens react-native-safe-area-context</code>
-  <br>> npm, yarn 으로도 설치가능
-* IOS 용 > <code>npx pod-install ios</code>
 
-#### 수정작업
-* (expo create-react-app 은 세팅이 되어있어 수정할 필요없음)
-* react-native-screens 패키지가 android에서 동작하려면 MainAcitivy.java의 수정 필요
-  * 위치 : android/app/src/main/java/프로젝트이름/MainAcitivy.java
-  * 수정 작업
-    ```java
-    import android.os.Bundle;
 
-    @Override
-    protected void onCreate(Bundle saveInstanceState){
-      super.onCreate(null);
-    }
-    ```
 
-### NavigationContainer, createNativeStackNavigator
-* <code>import { NavigationContainer } from '@react-navigation/native';</code>
-* <code>import { createNativeStackNavigator } from '@react-navigation/native-stack</code>
-* native-stack은 createNativeStackNavigator 와 Screen 두 개의 속성을 포함하는 객체를 반환하는 함수. 경로에 대한 구성을 정의하려면 요소를 자식으로 Navigator에 포함해야 함
-* 기본 구조
-  ```javascript
-  <NavigationContainer>
-    <Stack.Navigator initialRouteName="기본페이지">
-      <Stack.Screen name="페이지아이디1" component={페이지이름1} />
-      <Stack.Screen name="페이지아이디2" component={페이지이름2} />
-    </Stack.Navigator>
-  </NavigationContainer>
-  ```
-
-#### 기능
-* initialRouteName :스택의 초기 경로(기본 페이지)를 지정할 때 사용
-* 화면 별 옵션을 지정하려면 options의 prop을 Stack.Screen에 전달할 수 있음
-* 일반적인 옵션의 경우 prop을 전달할 수도 있음
-  ```javascript
-  <Stack.Screen name="Home">
-    {(props) => <HomeScreen {...props} extraData={someDate} />}
-  </Stack.Screen>
-  ```
-* navigation이 갖고 있는 세 가지 함수
-  * <code>navigation.navigate('이동페이지')</code>
-  * <code>navigation.push('이동페이지')</code> - 자기 자신 페이지 포함
-  * <code>navigation.goBask()</code> - 하나 이전 페이지로 이동
-  * <code>navigation.topToTop()</code> - 모달(첫 페이지)로 이동
-* Stack.Screen
-  * 갖는 속성 : name(아이디값), components(스크린값), options
-    * options는 navigation과 route 두 값을 가지고 있음
-  * 타이틀 업데이트 : <code>navigation.setOptions({ title: '업데이트할 내용'})</code>
-  * options
-    ```javascript
-    options={
-      title: '타이틀',
-      headerStyle: {
-        // 헤더의 스타일시트 적용
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        // 헤더의 폰트 스타일시트 적용
-      }
-    }
-    ```
-    * headerLeft, headerRight
-    * 뒤로가기 : headerBackTitle, headerTitleStyle, headerBackImageSource
-* TopTab
-  * @react-navigation/material-top-tabs, react-native-tab-view
-
-### Drawer
-* 햄버거 아이콘을 누르면 메뉴가 나오는 기능이 구현된 모듈
-#### 설치
-* <code>@react-navigation/drawer</code>, <code>react-native-reanimated</code> 설치
-#### 기능
-* <code>navigation.dispatch(DrawerActions.openDrawer())</code> : drawer 열기
-  <br>> <code>navigation.openDrawer()</code>
-* <code>navigation.dispatch(DrawerActions.closeDrawer())</code> : drawer 닫기
-  <br>> <code>navigation.closeDrawer()</code>
-* <code>navigation.dispatch(DrawerActions.toggleDrawer())</code> : drawer 열고 닫기
-  <br>> <code>navigation.toggleDrawer()</code>
-* <code>const isDrawerOpen = useDrawerStatus() === 'open'</code> : drawer가 열려있는지 확인
-
-## StatusBar
-* 상단 메뉴바에 디자인이 묻히지 않게 해야함
-* <code>react-native-safe-area-context</code> 모듈의 <code>useSafeAreaInsets()</code> 훅을 사용하면 StatusBar의 높이를 구할 수 있음
 
 ## 자잘한 기능들(react-native 모듈)
 * Image 태그의 속성에 reaseMode라는 속성이 있음
   <br>> cover, contain, stretch, repeat
 * <code>KeyboardAvoidingView</code> 태그로 감싸면 키보드가 나올때 키보드에 가리지 않음
 * TouchableNativeFeedback 태그: 클릭 시 물결 이벤트가 나옴
+* TextInput : option
+  * onChangeText : 텍스트가 바뀔 때마다 함수 적용
+  * returnKeyType : 자판 UI의 엔터 버튼을 수정
+    * don(완료), go(이동), next(다음), search(검색), send(보내기)
+    * IOS 전용 : default(기본), emergency-call(긴급통화), google(검색), join(가입), route(이동), yahoo(검색)
+    * Android 전용 : none(일반, Enter), previous(뒤로)
+  * onEndEditting : 수정이 끝났을 때 함수를 호출
+  * onSubmitEditting : 완료 버튼을 눌렀을 대 함수 호출
+* Keyboard > Keyboard.dismiss() : 키보드가 닫히게 함
 
-## expo-app-loading
-* 앱 로딩 화면과 관련된 모듈
-
-
-## 용도 확인 필요한 모듈
-* 그 외 사용한 모듈(용도 확인 필요)
-  * react-native-screens, 
-  * react-native-safe-area-context
-  * @react-navigation/material-top-tabs
-  * react-native-tab-view
-  * react-native-table-view
-  * react-native-pager-view
-  * react-native-paper
-  * react-native-reanimated
-  * react-native-shared-element
-  * react-navigation-shared-element
-  * react-native-animatable : 애니메이션을 용이하게 해줌
-  * react-native-gesture-handler 
-  * react-native-vector-icons : 벡터 아이콘
-  * expo-app-loading
-  * expo-asset
-  * expo-font
-  * expo-location
-* plugin
-  * @react-navigation/bottom-tabs 
-  * @react-navigation/material-bottom-tabs 
-  * @react-navigation/material-top-tabs 
-  * @react-navigation/native 
-  * @react-navigation/stack
-  * @react-navigation/native-stack
-  * @react-native-community/masked-view

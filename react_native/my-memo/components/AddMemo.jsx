@@ -1,31 +1,39 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Image, TouchableOpacity, TouchableNativeFeedback, Platform } from 'react-native';
+import { 
+  StyleSheet, View, TextInput, Image, TouchableOpacity, 
+  TouchableNativeFeedback, Platform, Keyboard } from 'react-native';
 
 const AddMemo = () => {
   const [text, setText] = useState('');
   // console.log(text);
+  const onPress = () => {
+    setText('');
+    Keyboard.dismiss();
+  }
   const button = (
     <View style={styles.buttonStyle}>
       <Image source={require('../assets/images/add_white/add_white.png')}/>
     </View>
-  )
+  );
   return (
     <View style={styles.block}>
       <TextInput 
         placeholder='메모를 입력하세요.' 
         style={styles.input}
         value={text}
-        onChangeText={setText}/>
+        onChangeText={setText}
+        onSubmitEditing={onPress}
+        returnKeyType="done"/>
       <View style={styles.circleWrapper}>
       { 
         Platform.select({
           ios: (
-            <TouchableOpacity activeOpacity={0.5} onPress={() => console.log('버튼 누름')}>
+            <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
               {button}
             </TouchableOpacity>
           ),
           android: (
-            <TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress={onPress}>
               {button}
             </TouchableNativeFeedback>
           )
@@ -38,14 +46,17 @@ const AddMemo = () => {
 
 const styles = StyleSheet.create({
   block: {
+    backgroundColor: '#fff',
     height: 70,
     paddingHorizontal: 18,
     borderColor: '#bdbdbd',
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
   },
   input: {
+    flex: 1,
     fontSize: 16,
     paddingVertical: 10
   },
@@ -55,8 +66,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     backgroundColor: '#d500f9',
-    borderRadius: 24,
-    marginBottom: 40,
+    borderRadius: 24
   },
   circleWrapper: {
     overflow: 'hidden',
