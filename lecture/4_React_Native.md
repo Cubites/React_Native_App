@@ -180,11 +180,22 @@ const animate = () => {
   * stagger(delay, ) : 일정 간격(delay)을 두고 순차적으로 실행
   * delay()
 
+## 모바일 저장소
+* 앱이 꺼져도 데이터가 유지될 필요가 있음
+* React Native에서는 이러한 저장소로 AsyncStorage를 제공
+### AsyncStorage
+* AsyncStorage는 안드로이드에서는 SQLite를 기반으로 구현됨
+  * IOS에서는 native code로 구현되어 있음
+* AsyncStorage는 브라우저의 localStorage와 유사함
+  * 유사한 점
+    * 값을 저장할 때는 문자열 타입으로 저장해야함
+    * getItem, setItem, removeItem, clear 과 같은 localStorage에서 사용하는 메서드와 같은 메서드들 존재
+  * 차이점
+    * AsyncStorage는 비동기형. 즉 값을 조회하거나 설정할 때 Promise를 반환
 
-
-
-
-
+## Async Await
+* 함수 선언부 앞 부분에 sync 키워드를 붙이고 Promise의 앞 부분에 await 사용
+  <br>> then, catch 없이도 쉽게 비동기 작업을 관리할 수 있음
 
 ## 자잘한 기능들(react-native 모듈)
 * Image 태그의 속성에 reaseMode라는 속성이 있음

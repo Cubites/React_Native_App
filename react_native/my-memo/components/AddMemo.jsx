@@ -3,10 +3,11 @@ import {
   StyleSheet, View, TextInput, Image, TouchableOpacity, 
   TouchableNativeFeedback, Platform, Keyboard } from 'react-native';
 
-const AddMemo = () => {
+const AddMemo = ({ onInsert }) => {
   const [text, setText] = useState('');
   // console.log(text);
   const onPress = () => {
+    onInsert(text);
     setText('');
     Keyboard.dismiss();
   }
