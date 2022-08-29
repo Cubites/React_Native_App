@@ -109,6 +109,7 @@
   * expo-asset
   * expo-font
   * expo-location
+  * react-native-location, expo-location
 * plugin
   * @react-navigation/bottom-tabs 
   * @react-navigation/material-bottom-tabs 

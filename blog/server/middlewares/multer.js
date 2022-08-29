@@ -1,5 +1,5 @@
 const multer = require('multer');
-const upload = multer({dest: 'uploads/'});
+// const uploads = multer({dest: 'uploads/'});
 
 // 아래의 두가지 옵션 가능
 // destination (어느 폴더에 업로드 한 파일을 저장할 지 경정)

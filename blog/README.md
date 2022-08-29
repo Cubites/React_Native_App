@@ -15,3 +15,5 @@
 ## 사용 모듈
 * morgan : Log를 확인할 때 사용
   * 개발 단계에서만 사용하는 모듈이므로 -D 를 붙여서 설치
+* express-validator
+* express-async-errors
